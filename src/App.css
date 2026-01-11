@@ -1,0 +1,398 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+/* CONTAINER */
+.Movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+}
+
+/* CARD */
+.Movie-wrapper {
+  width: 220px;
+  position: relative;
+  background: #1c1c1c;
+  border-radius: 10px;      /* kotak tapi masih halus */
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.Movie-wrapper:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+/* IMAGE */
+.Movie-image {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0; /* BENERAN KOTAK */
+}
+
+/* INFO AREA */
+.Movie-title {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 12px 0;
+  min-height: 44px; /* biar judul sejajar */
+}
+
+.Movie-date {
+  font-size: 14px;
+  color: #aaa;
+  padding: 4px 12px 12px;
+}
+
+/* RATE BADGE */
+.Movie-rate {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2; /* penting */
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 6px 10px;
+  font-weight: bold;
+  font-size: 14px;
+  backdrop-filter: blur(4px);
+}
+
+
+/* SEARCH */
+.Movie-search {
+  width: 320px;
+  font-size: 18px;
+  padding: 14px 16px;
+  margin-bottom: 32px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+/* ===== SKELETON ===== */
+.skeleton {
+  pointer-events: none;
+}
+
+.Skeleton-image {
+  width: 100%;
+  height: 320px;
+  background: #2a2a2a;
+}
+
+.Skeleton-title {
+  height: 18px;
+  margin: 12px;
+  background: #2a2a2a;
+}
+
+.Skeleton-date {
+  height: 14px;
+  margin: 0 12px 12px;
+  background: #2a2a2a;
+  width: 60%;
+}
+
+/* shimmer animation */
+.skeleton div {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton div::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.08),
+    transparent
+  );
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    left: 100%;
+  }
+}
+
+/* Container utama dengan layout yang lebih fleksibel */
+.Detail-container {
+  background-color: #282c34;
+  min-height: 100vh;
+  padding: 80px 24px 24px;
+  color: white;
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Back button dengan posisi yang lebih baik */
+.Back-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 10;
+}
+
+.Back-button:hover {
+  background: white;
+  color: #282c34;
+  transform: translateX(-4px);
+  border-color: white;
+}
+
+/* Content wrapper untuk poster dan info */
+.Detail-container > .Detail-poster,
+.Detail-container > .Detail-info {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Wrapper untuk layout flex */
+@media (min-width: 768px) {
+  .Detail-container {
+    padding: 40px 60px;
+  }
+  
+  .Detail-container::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+/* Poster dengan shadow dan efek modern */
+.Detail-poster {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  margin-top: 50px;
+  margin-bottom: 32px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.Detail-poster:hover {
+  transform: scale(1.02);
+}
+
+/* Info section dengan typography yang lebih baik */
+.Detail-info {
+  max-width: 100%;
+}
+
+.Detail-info h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #fff 0%, #a0a0a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+.Detail-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Tagline dengan style yang lebih elegant */
+.Detail-tagline {
+  font-style: italic;
+  opacity: 0.7;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #b0b0b0;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+/* Meta info dengan card style */
+.Detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 24px 0;
+  justify-content: center;
+}
+
+.Detail-meta span {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.Detail-meta span:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Overview dengan readability yang lebih baik */
+.Detail-overview {
+  line-height: 1.8;
+  margin-top: 24px;
+  font-size: 1.05rem;
+  color: #e0e0e0;
+  text-align: left;
+}
+
+/* Trailer section dengan spacing yang lebih baik */
+.Detail-trailer {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.Detail-trailer iframe {
+  width: 100%;
+  height: 400px;
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+  border: none;
+}
+
+.No-trailer {
+  margin-top: 32px;
+  opacity: 0.5;
+  font-style: italic;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* Responsive Design */
+
+/* Tablet */
+@media (min-width: 768px) {
+  .Detail-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+    padding-top: 100px;
+  }
+  
+  .Back-button {
+    top: 40px;
+    left: 60px;
+  }
+  
+  .Detail-poster {
+    margin-bottom: 0;
+    flex-shrink: 0;
+    width: 300px;
+  }
+  
+  .Detail-info {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .Detail-info h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Desktop besar */
+@media (min-width: 1200px) {
+  .Detail-container {
+    padding: 100px 80px 60px;
+    gap: 50px;
+  }
+  
+  .Back-button {
+    left: 80px;
+    top: 60px;
+  }
+  
+  .Detail-poster {
+    width: 350px;
+  }
+  
+  .Detail-trailer iframe {
+    height: 450px;
+  }
+}
+
+/* Mobile kecil */
+@media (max-width: 480px) {
+  .Detail-container {
+    padding: 20px;
+  }
+  
+  .Detail-info h1 {
+    font-size: 1.8rem;
+  }
+  
+  .Detail-meta {
+    gap: 12px;
+  }
+  
+  .Detail-meta span {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .Detail-trailer iframe {
+    height: 250px;
+  }
+  
+  .Back-button {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
